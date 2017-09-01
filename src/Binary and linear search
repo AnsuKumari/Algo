@@ -32,7 +32,7 @@ int bs(int n){
 		else if(n > ar[m])
 			l = m + 1;
 	}
-	re/turn -1;
+	return -1;
 }
 
 int ls(int n){
