@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+#define MAX 4
+
+int p[MAX], w[MAX], c;
+double x[MAX];
+
+double GKSack(){
+	for(int i = 0; i < MAX; i++)
+		x[i] = 0;
+		
+	double pr = 0; //Profit
+	int wt = 0; //Weight
+	
+	for(int i = 0; wt < c; i++){
+		if(wt + w[i] <= c){
+			x[i] = 1;
+			wt += w[i];
+		} else{
+			x[i] = (c - wt)/(w[i] * 1.0);
+			wt = c;
+		}
+		pr += p[i]*x[i];
+	}
+	return pr;
+}
+
+int main(){
+	for(int i = 0; i < MAX; i++)
+		cin >> p[i];
+	for(int i = 0; i < MAX; i++)
+		cin >> w[i];
+	cin >> c;
+	
+	cout << GKSack() << endl;
+	
+	for(int i = 0; i < MAX; i++)
+		cout << x[i] << " ";
+	
+}
